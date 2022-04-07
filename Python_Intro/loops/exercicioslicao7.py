@@ -13,7 +13,7 @@ while not finalizado:
 # Display the to-do list.
     
 print()
-print('Sua lista de tarefas:')
+print('Voce tem num total de {0} tarefas. Sua lista de tarefas:'.format(len(litaTarefas)))
 print('-' * 16)
 
 for tarefa in litaTarefas:
