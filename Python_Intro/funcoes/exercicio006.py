@@ -7,7 +7,7 @@ def get_word(word_type):
     else:
 # Otherwise, use 'a' in front of 'noun' or 'verb'
         a_or_an = 'a'
-    return input('Enter a word that is {0} {1}: '.format(a_or_an, word_type))
+    return input('Digite uma palavra que {0} {1}: '.format(a_or_an, word_type))
 
 def fill_in_the_blanks(noun, verb, adjective):
     """Fills in the blanks and returns a completed story."""
