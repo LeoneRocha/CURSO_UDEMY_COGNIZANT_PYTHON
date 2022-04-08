@@ -34,3 +34,16 @@ Come back strong with 50 belly dancers"""
 
  
   
+print(lyric[len(lyric)-38:])
+
+
+
+def printtype(valor):
+    if type(valor) == int:
+        return "Int"
+    elif type(valor) == float:
+        return "Float"
+    else:
+        return "String"
+
+printtype(10)
