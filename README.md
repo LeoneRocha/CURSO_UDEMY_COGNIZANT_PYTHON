@@ -7,6 +7,9 @@ git push http://example.com/repo.git
 
 
 automacao CRON JOb
+
+https://www.madeupbypeople.com/
+
 cmd 
 python C:\Estudos\git\CURSO_UDEMY_COGNIZANT_PYTHON\CURSO_UDEMY_COGNIZANT_PYTHON\Introduction\HelloWorld.py
 
