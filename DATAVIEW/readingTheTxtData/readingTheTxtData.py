@@ -6,9 +6,14 @@
 
 #Data Source - http://www.seanlahman.com/baseball-archive/statistics/ 
 #Stats for 2017
+import os
+
+pastacorrente = os.getcwd()   
+pasta_arquivo  = pastacorrente+ "\\DATAVIEW\\readingTheTxtData\\" 
+
 
 def readTxt():
-    f = open("Sheet1E1.txt","r")
+    f = open(pasta_arquivo+ "Sheet1E1.txt","r")
     data = {}
     
     for line in f:
@@ -26,3 +31,12 @@ def readTxt():
     return data        
  
 txtVersionData = readTxt()
+#print(txtVersionData.keys())
+
+for chave in txtVersionData:
+    print("{} - {}".format(chave, txtVersionData[chave][:5]))
+ 
+
+
+f1 = open(pasta_arquivo+ "Sheet1E1_EXPORT.txt","w")
+f1.write(str(txtVersionData))
