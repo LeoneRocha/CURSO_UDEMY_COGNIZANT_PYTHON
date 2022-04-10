@@ -6,6 +6,14 @@ argumentos = ""
 #sys.argv[1]
 arquivoNomeFull = "shake.txt"
 
+def removepunct(string):
+  punctstr = ".,-,#,>,<,{,},[,],(,),=,==,*,?,0,1,2,3,4,5,6,7,8,9,+,/,:,'"
+  nopunctstr = ""
+  for letter in string:
+    if letter.lower() not in punctstr:
+      nopunctstr += letter.lower()
+  return nopunctstr
+
 #print(pasta_arquivo)
 try: 
     if  argumentos != "":
@@ -21,7 +29,7 @@ try:
     pasta_arquivoOrdenado  = pastacorrente+ "\\Python_Programmer\\" + arquivoNomeOrdenado
 
     arquivo = open(pasta_arquivo,'r')
-    texto = arquivo.read()
+    texto = removepunct( arquivo.read().lower())
     palavras = {}
     palavrasEncontradas = texto.split()
  
@@ -30,7 +38,7 @@ try:
             palavras[palavra] += 1
         else: 
             palavras[palavra] = 1
-            
+
     palavrasOrdenada = sorted(palavras.items(), key=operator.itemgetter(1), reverse=True)
     #print(palavrasOrdenada)
     arquivoOrdenado = open(pasta_arquivoOrdenado,'w')
