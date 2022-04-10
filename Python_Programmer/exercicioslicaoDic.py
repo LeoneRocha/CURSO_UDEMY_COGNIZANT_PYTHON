@@ -47,13 +47,33 @@ class CarN:
         print("age is ", 2021 - self.year)
         
     
-car1 = class Car:
-    def __init__(self,year, make, model):
-        self.year = year
-        self.make = make
-        self.model = model
-    
-    def age(self):
-        return 2016 - self.year(1995, "Kia", "Proceed")
+car1 = Car(1995, "Kia", "Proceed")
 car1.age()
 print(car1.year)
+ 
+class Mustang(Car):
+    def __init__(self,year):
+        self.year = year
+        self.make = "Ford"
+        self.model = "Mustang"
+ 
+
+def square(number):
+    if  str(type(number)) == "<class 'int'>":
+            return number * number
+    elif  str(type(number)) == "<class 'float'>":
+            return number * number
+    else:
+            return None
+#Test
+print(square(5))
+print(square(5.0))
+print(square("It should return None"))
+
+
+
+from turnup import emojify
+emojify("Nick is cool!")
+
+motto = open("motto.txt", 'r')
+print(motto.read())
