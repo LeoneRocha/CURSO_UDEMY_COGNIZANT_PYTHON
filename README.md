@@ -17,3 +17,7 @@ python C:\Estudos\git\CURSO_UDEMY_COGNIZANT_PYTHON\CURSO_UDEMY_COGNIZANT_PYTHON\
 https://github.com/bear/python-twitter
 
 $ pip3 install python-twitter
+
+
+https://matplotlib.org/
+pip install matplotlib
