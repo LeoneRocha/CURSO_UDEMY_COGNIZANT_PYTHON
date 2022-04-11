@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
 import os
 pastacorrente = os.getcwd()   
-pasta_arquivo  = pastacorrente+ "\\DATAVIEW\\DV-ExerciseSheet1\\" 
+pasta_arquivo  = pastacorrente+ "\\DATAVIEW\\Sheet1E1Solution\\" 
 def readTxt():
     f = open(pasta_arquivo+ "Sheet1E2.txt","r")
     data = {}
