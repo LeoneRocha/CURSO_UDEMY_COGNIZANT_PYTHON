@@ -9,9 +9,13 @@
 
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
+import os
+pastacorrente = os.getcwd()   
+pasta_arquivo  = pastacorrente+ "\\DATAVIEW\\DV-ExerciseSheet1\\" 
+
 
 def readTxt():
-    f = open("Sheet1E2.txt","r")
+    f = open(pasta_arquivo+ "Sheet1E2.txt","r")
     data = {}
     
     for line in f:
@@ -29,7 +33,7 @@ def readTxt():
     return data
 
 def readCSV():
-    f = open("Sheet1E2.csv","r")  
+    f = open(pasta_arquivo+ "Sheet1E2.csv","r")  
     data = {}
     
     firstLine = f.readline().strip("\n").split(",")[1:]
@@ -67,12 +71,17 @@ ax.plot(data["Year"],HPAB,c="g")
 ax2 = fig.add_subplot(2,1,2)
 ax2.plot(data["Year"],data["AtBase"],c="purple")
 
+#1) Adjust the x and y axis to an appropriate scale 
+#for the data we’re using
 ax.set_ylim(0,1)
 ax.set_xlim(data["Year"][0]-1,data["Year"][-1]+1)
 
 
 ax2.set_ylim(0,550)
 ax2.set_xlim(data["Year"][0]-1,data["Year"][-1]+1)
+
+#2) Label the axes of your graph and give 
+#your plot a title
 
 ax.set_xlabel("Year")
 ax.set_ylabel("HPAB")
@@ -82,6 +91,8 @@ ax2.set_xlabel("Year")
 ax2.set_ylabel("At Base Count")
 ax2.set_title("At Base Count for each Year")
 
+#3) Create the x and y ticks through changing 
+#the major and minor ticks
 
 ax.xaxis.set_major_locator(majorLocator)
 ax.xaxis.set_minor_locator(minorLocator)
@@ -89,38 +100,5 @@ ax.xaxis.set_minor_locator(minorLocator)
 ax2.xaxis.set_major_locator(majorLocator)
 ax2.xaxis.set_minor_locator(minorLocator)
 
-#1) Create a list containing the names for each 
-#of the major ticks that will be replaced 
-#e.g. 80’s, 90’s, 00’s, ...
-
-majorLabels = []
-
-for tempValue in ax.get_xticks().tolist():
-    intValue = int(tempValue)
-    strValue = str(intValue)
-    formatedValue = strValue[-2:]+"'s"
-    majorLabels.append(formatedValue)
-    
-#2) Create a list containing the names for each
-# of the minor ticks that will be replaced
-# e.g. ’82, ’84, ’86, ...
-
-minorLabels = []
-for tempValue in range(1882,1921,2):
-    if tempValue%10 == 0:
-        minorLabels.append("")
-    else:
-        strValue = str(tempValue)
-        formatedValue = "'"+strValue[-2:]
-        minorLabels.append(formatedValue)
-        
-#3) Specify and change out the appropriate
-# major and minor ticks
-
-ax.set_xticklabels(majorLabels)
-ax2.set_xticklabels(majorLabels)
-
-ax.set_xticklabels(minorLabels,minor=True)
-ax2.set_xticklabels(minorLabels,minor=True)
 
 plt.show()

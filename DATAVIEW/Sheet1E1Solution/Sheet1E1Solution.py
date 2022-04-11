@@ -7,9 +7,12 @@
 #Data Source - http://www.seanlahman.com/baseball-archive/statistics/ 
 #Stats for 2017
 import matplotlib.pyplot as plt
+import os
+pastacorrente = os.getcwd()   
+pasta_arquivo  = pastacorrente+ "\\DATAVIEW\\Sheet1E1Solution\\" 
 
 def readTxt():
-    f = open("Sheet1E1.txt","r")
+    f = open(pasta_arquivo+ "Sheet1E1.txt","r")
     data = {}
     
     for line in f:
@@ -27,7 +30,7 @@ def readTxt():
     return data
 
 def readCSV():
-    f = open("Sheet1E1.csv","r")  
+    f = open(pasta_arquivo+"Sheet1E1.csv","r")  
     data = {}
     
     firstLine = f.readline().strip("\n").split(",")[1:]
