@@ -1,7 +1,9 @@
-
+from re import I
+from matplotlib import projections
 import matplotlib.pyplot as plt
 import datetime as  datahora
 from mpl_toolkits.mplot3d import Axes3D as gph3D
+from numpy import append
  
 #carrotData = readCSV(pasta_arquivo + "carrotPrices.csv")
 #onionData = readCSV(pasta_arquivo + "onionPrices.csv") 
@@ -27,16 +29,14 @@ def lerTxt (fileName):
         for x in restData:
             finalData.append(int(x))
             
-        data[dataName] = finalData
-        
+        data[dataName] = finalData        
     f.close()
     return data
 
 
 def readCSV(fileName):
     f = open(fileName,"r")  
-    data = {}
-    
+    data = {}    
     firstLine = f.readline().strip("\n").split(",")[1:]
 
     for name in firstLine:
@@ -59,15 +59,51 @@ def readCSV(fileName):
         data["date"].append(tempDT)
         data["price"].append(price)
 #        print(data)
-#        break
-        
-        
+#        break 
     return data
-
+#load datas
 import os
 pastacorrente = os.getcwd()   
-pasta_arquivo  = pastacorrente+ "\\DATAVIEW\\Examples\\Sheet5E1Solution\\" 
+pasta_arquivo  = pastacorrente+ "\\DATAVIEW\\Examples\\ExerciseSheet6\\" 
 
 carrotData = readCSV(pasta_arquivo + "carrotPrices.csv")
 onionData = readCSV(pasta_arquivo + "onionPrices.csv") 
 
+#print(carrotData)
+#print(onionData)
+#setup 3d plot 
+valores  = []
+replacement = []
+
+for i in range(len(carrotData["date"])):
+    if carrotData["date"][i].day  == 1:
+        valores.append(i)
+        replacement.append(carrotData["date"][i])
+
+fig = plt.figure(figsize=(8,8))
+ax1 = fig.add_subplot(1,1,1,projection="3d")
+ax1.set_ylim(0.5,2.5)
+ax1.view_init(0,-90)
+
+
+diasAno  = 365
+#print(carrotData["price"])
+ax1.plot(xs = [0], ys = [1], zs = carrotData["price"][:1], color= "orange")
+ax1.plot(xs = [0], ys = [2], zs = onionData["price"][:1], color= "purple")
+
+for i in range(5,365,5):
+    ax1.plot(xs = range(i), ys = [1]* i, zs = carrotData["price"][:i], color= "orange")
+    ax1.plot(xs = range(i), ys = [2]* i, zs = onionData["price"][:i], color= "purple")
+    ax1.view_init(0+ i/20,-90+1/10)
+    plt.draw()
+    plt.pause(0.05)
+    
+
+#plt.xticks(valores, replacement)
+
+ax1.set_title('Preco de Cebolas e Cenoutras por dias')
+#fig.xlabel('Dias')
+#fig.ylabel('QUantidade por ano')
+ax1.set_ylabel("Preço")
+ax1.set_xlabel("Dias")
+plt.show()
