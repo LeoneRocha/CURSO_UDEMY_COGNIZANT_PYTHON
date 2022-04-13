@@ -64,13 +64,18 @@ countryCoords = {"Canada":{"x":150,
     }
                 
 #1) Load and save the data points into a relevant format
-carrotData = readCSV("carrotPrices.csv")
-onionData = readCSV("onionPrices.csv")
+import os
+pastacorrente = os.getcwd()   
+pasta_arquivo  = pastacorrente+ "\\DATAVIEW\\Examples\\Sheet5E1Solution\\" 
+
+carrotData = readCSV(pasta_arquivo + "carrotPrices.csv")
+onionData = readCSV(pasta_arquivo + "onionPrices.csv") 
+
 
 minPrice = min(carrotData["price"])
 maxPrice = max(carrotData["price"])
 #print(carrotData)
-img = mpimg.imread("worldMap.png")
+img = mpimg.imread(pasta_arquivo +"worldMap.png")
 
 spines = ["top","bottom","left","right"]
 fig = plt.figure(figsize=(8,8))

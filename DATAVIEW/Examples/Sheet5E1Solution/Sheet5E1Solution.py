@@ -51,11 +51,17 @@ def readCSV(fileName):
         
     return data
  
-carrotData = readCSV("carrotPrices.csv")
-onionData = readCSV("onionPrices.csv")
+ 
+import os
+pastacorrente = os.getcwd()   
+pasta_arquivo  = pastacorrente+ "\\DATAVIEW\\Examples\\Sheet5E1Solution\\" 
+
+carrotData = readCSV(pasta_arquivo + "carrotPrices.csv")
+onionData = readCSV(pasta_arquivo + "onionPrices.csv") 
+ 
 
 #1) Import the image of the world map
-img = mpimg.imread("worldMap.png")
+img = mpimg.imread(pasta_arquivo + "worldMap.png")
 
 #2) Display the image of the world map
 #3) Remove the spines and axis ticks to make the image appear 

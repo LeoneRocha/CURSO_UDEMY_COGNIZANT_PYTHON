@@ -54,8 +54,14 @@ def readCSV(fileName):
         
     return data
  
-carrotData = readCSV("carrotPrices.csv")
-onionData = readCSV("onionPrices.csv")
+ 
+import os
+pastacorrente = os.getcwd()   
+pasta_arquivo  = pastacorrente+ "\\DATAVIEW\\Examples\\Sheet4E1Solution\\" 
+
+carrotData = readCSV(pasta_arquivo + "carrotPrices.csv")
+onionData = readCSV(pasta_arquivo + "onionPrices.csv") 
+ 
 
 
 #1) For each vegetable, create a box and whisker plot and show them 
